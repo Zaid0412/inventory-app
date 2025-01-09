@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Poppins", serif;
+    color: var(--white);
+    box-sizing: border-box;
+}
+
+:root{
+    --white: #eee;
+    --grey: #1A1A1A;
+    --black: #000;
+    --red: #FF0000;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    overflow:  hidden scroll;
+}
+
+.header{
+    /* box-sizing: border-box; */
+    width: 100vw;
+    height: 12vh;
+    background-color: var(--grey);
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header button a{
+    /* color: var(--black); */
+    text-decoration: none;
+}
+
+.header button.add-game-btn{
+    margin-left: auto;
+}
+
+.header button {
+    font-size: 18px;
+    color: #e1e1e1;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+  }
+  
+.header button:focus,
+.header button:hover {
+    color: var(--white);
+  }
+  
+.header button:focus:after,
+.header button:hover:after {
+    width: 100%;
+    left: 0%;
+  }
+  
+.header button:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color:var(--red);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+  }
+
+.header h1{
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.header h1 a{
+    text-decoration: none;
+}
+
+main{
+    display: flex;
+}
+
+ /* Sidebar */
+.sidebar{
+    box-sizing: border-box;
+    background-color: var(--black);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 11vw;
+    height: calc(100vh - 12vh);
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.sidebar h2{
+    font-size: 1.5em;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .categories{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 25px;
+}
+
+.sidebar form{
+    margin: 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.sidebar form button{
+    background-color: transparent;
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    margin-bottom: 7px;
+}
+
+.sidebar form button:hover{
+    color: var(--red);
+}
+
+.edit-icon {
+    /* display: none; */
+    transition: opacity 0.3s ease-in-out;  /* Smooth transition */
+    opacity: 0;
+    cursor: pointer;
+}
+
+.categories form:hover > a .edit-icon {
+    /* display: inline-block; */
+    opacity: 1;  /* Fully visible */
+}
+
+
+main{
+    width: calc(100vw - 0vw);
+    background-color: var(--black);
+}
+
+main .main{
+    width: 100%;
+}
+
+main .main form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+main .main form label{
+    opacity: .8;
+}
+
+.container{
+    overflow: visible; /* Allow dropdown to extend outside */
+    position: relative; /* Ensure proper stacking context */
+}
+
+main .main form select{
+    width: 200%;
+    position: relative; /* Keep it in the normal flow */
+    z-index: 1000; /* Ensure dropdown is above other elements */
+    margin-bottom: 150px;
+    padding-right: 20px; /* Ensure space for the arrow */
+    padding: 9px;
+    margin-bottom: 20px;
+    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 7px;
+    transition: all 0.15s ease-in;
+    /* color: var(--black); */
+    background-color: var(--black);
+    font-weight: 600;
+    background-position: right 20px;
+}
+
+main .main form.searchbar input{
+    padding: 9px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+    transition: all 0.15s ease-in;
+    /* color: var(--black); */
+    background-color: var(--black);
+    font-weight: 600;
+    width: 60%;
+}
+
+main .main form.searchbar input:focus{
+    outline: none;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 1);
+}
+
+main .main form input,
+main .main form textarea{
+    padding: 9px;
+    margin-bottom: 20px;
+    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 7px;
+    transition: all 0.15s ease-in;
+    /* color: var(--black); */
+    background-color: var(--black);
+    font-weight: 600;
+    width: 110%;
+}
+
+main .main form input:focus,
+main .main form textarea:focus{
+    outline: none;
+    /* border-bottom: 1.5px solid rgba(255, 255, 255, 1); */
+}
+
+/* 
+main .main.category-form form{
+    justify-content: center;
+    align-items: center;
+}
+
+main .main.category-form form div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+*/
+
+
+main .main.category-form form input{
+    width: 130%;
+} 
+
+main .games{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+    padding: 10px;
+}
+
+main .games .game{
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.15s ease-in;
+}
+
+main .games .game:hover{
+    background-color: #0d0d0d;
+}
+
+main .main .games .game button{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    text-align: start;
+}
+
+main .main .games .game button.view{
+    background-color: var(--red);
+    width: fit-content;
+    max-height: 2.5em;
+    border-radius: 5px;
+    padding: 5px 12px 5px 12px;
+    margin-bottom: 1em;
+    margin-right: auto;
+    margin-left: 1em;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+    will-change: transform;
+}
+
+main .main .games .game button.view:hover{
+    background-color: #ff2626;
+    transform: scale(1.025);
+}
+
+
+
+main .main .games .game button form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Game Display Page */
+
+main .game-display{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding:22px ;
+}
+
+main .game-display .game-name{
+    margin-bottom: 0;
+}
+
+main .game-display .game-price{
+    /* text-decoration: var(--red) underline 2px; */
+    border-bottom: 1.7px solid var(--red);
+    width: fit-content;
+    margin-top: 0;
+}
+
+.main .game-form{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 25px;
+}
+
+.main .game-form div{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.btns{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: row !important;
+    align-items: center;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+.delete-categ-modal button,
+.delete-categ-form button,
+form.delete button,
+form.edit button,
+.main .game-form button{
+  font-size: 1rem;
+  align-items: center;
+  height: 48px;
+  /* width: 200%; */
+  border-radius: 0.4rem;
+  font-weight: 600;
+  padding: 0 1.2rem;
+  color: #ddd;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(143, 142, 142, 0.15) !important;
+  background: #000000;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.15s ease;
+}
+
+.delete-categ-modal button:hover,
+.main .game-form button:hover{
+    background: var(--grey);
+}
+
+.delete-categ-modal button:nth-child(1):hover,
+.delete-categ-form button:hover,
+form.delete button:hover{
+    background-color: rgba(255, 0, 0, 0.4)
+}
+
+form.edit button:hover{
+    background-color: rgba(255, 255, 0, .4);
+}
+
+.delete-categ-form{
+    display: flex;
+    align-items: start;
+    justify-content: start !important;
+    padding-left: 45px;
+}
+
+.delete-categ-form button{
+    width: 20%;
+}
+
+.delete-categ-modal{
+    background-color: var(--black);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 7px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;     */
+    /* box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px; */
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.delete-categ-modal::backdrop{
+    background-color: var(--black);
+    opacity: 0.3;
+}
+
+.delete-categ-modal button{
+    width: 100%;
+}
+
+/* .delete-categ-modal form{
+
+} */

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <h1><a href="/">Games Inventory</a></h1>
+    </div>
+    <main>
+        <div class="sidebar">
+            <h2>Categories</h2>
+            <div class="categories">
+                <% categories.map(categ => { %>
+                    <form action="categories/<%= categ.id %>">
+                        <button><%= categ.name %></button>
+                    </form>
+                    <% }) %>
+            </div> 
+        </div>
+        <div class="main category-form">
+            <form action="/categories/edit/<%= categId.id %>" method="POST" class="game-form">
+                <div>
+                    <label for="category-name">Edit Category Name</label>
+                    <input type="text" name="category" id="category-name" required minlength="3" value="<%= categ.name %>">
+                </div>
+                <div class="btns">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+            <div class="delete-categ-form">
+                <button type="submit">Delete</button
+            </div>
+        </div>
+        <dialog class="delete-categ-modal">
+            <p>
+                Deleting a Category will Delete all Games within The Category
+            </p>
+            <button class="cancel">Cancel</button>
+            <form action="/categories/delete/<%= categId.id %>" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </dialog>
+    </main>
+
+    <script>
+        document.querySelector('.delete-categ-form button').addEventListener('click', () => {
+            document.querySelector('.delete-categ-modal').showModal()
+        })
+
+        document.querySelector('button.cancel').addEventListener('click', () => {
+            document.querySelector('.delete-categ-modal').close()
+        })
+    </script>
+</body>
+</html>

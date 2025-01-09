@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <h1><a href="/">Games Inventory</a></h1>
+    </div>
+    <main>
+        <div class="sidebar">
+            <h2>Categories</h2>
+            <div class="categories">
+                <% categories.map(categ => { %>
+                    <form action="categories/<%= categ.id %>">
+                        <button><%= categ.name %></button>
+                    </form>
+                    <% }) %>
+            </div>
+        </div>
+        <div class="main">
+            <div class="game-display">
+                <h1 class="game-name"><%= game.name %></h1>
+                <p class="game-price">Price: $<%= game.price %></p>
+                <p class="game-desc"><%= game.description %></p>
+                <p>Categories: <a href="/categories/<%= categId.id %>"><%= gameCateg.category_name %></a></p>
+            </div>
+            <div class="btns">
+                <form action="/games/delete/<%= game.id %>" method="POST" class="delete">
+                    <button type="submit">Delete</button>
+                </form>
+                <form action="/games/edit/<%= game.id %>" method="GET" class="edit">
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

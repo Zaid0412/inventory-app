@@ -1,0 +1,38 @@
+const db = require('../db/queries');
+
+async function getAllCategories(req, res) {
+    const categories = await db.getAllCategories()
+    return categories
+}
+
+async function getCategoryFromGame(req, res) {
+    const category = await db.getCategoryFromGame(req.body.game)
+    return category
+}
+
+async function insertCategory(req, res) {
+    db.insertCategory(req.body.category)
+    res.redirect('/')
+}
+
+async function deleteCategory(req, res) {
+    db.deleteCategory(req.body.categId)
+}
+
+async function editCategory(req, res) {
+    db.editCategory(req.params.id, req.body.category)
+    res.redirect('/')
+}
+
+async function getCategoryFromId(req, res) {
+    const category = await db.getCategoryFromId(req.params.id)
+    return category
+}
+
+module.exports = {
+    getAllCategories,
+    insertCategory,
+    deleteCategory,
+    editCategory,
+    getCategoryFromId
+}

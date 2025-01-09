@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <h1><a href="/">Games Inventory</a></h1>
+    </div>
+    <main>
+        <div class="sidebar">
+            <h2>Categories</h2>
+            <div class="categories">
+                <% categories.map(categ => { %>
+                    <form action="categories/<%= categ.id %>">
+                        <button><%= categ.name %></button>
+                    </form>
+                    <% }) %>
+            </div> 
+        </div>
+        <div class="main">
+            <form action="/games/new" method="POST" class="game-form">
+                <div>
+                    <label for="game-name">Title</label>
+                    <input type="text" name="name" id="game-name" required minlength="3">
+                </div>
+                <div>
+                    <label for="game-price">Price</label>
+                    <input type="number" name="price" id="game-price" required min="0">
+                </div>
+                <div>
+                    <label for="game-desc">Description</label>
+                    <textarea name="desc" id="game-desc" cols="30" rows="5" required minlength="5"></textarea>
+                </div>
+                <div class="container">
+                    <label for="game-category">Game Category</label>
+                    <select name="categoryId" id="game-category">
+                        <% categories.map(categ => { %>
+                            <option value="<%= categ.id %>"><%= categ.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
