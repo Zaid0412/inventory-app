@@ -29,7 +29,8 @@ async function getGamesFromCategory(req, res) {
 async function searchGame(req, res) {
     const games = await db.searchGame(req.body.searchWord)
     categoryControllers.getAllCategories(req, res).then(categs => {
-        res.render('index', {categories: categs, games})
+        res.render('index', {categories: categs, games, categName: false, searchWord: req.body.searchWord})
+        console.log(req.body.searchWord)
     })
 }
 

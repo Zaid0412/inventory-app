@@ -58,7 +58,7 @@ app.get(['/categories/:id'], (req, res) => {
     categoryControllers.getCategoryFromId(req, res).then(categ => {
         db.getGamesFromCategory(categ[0].name).then(games => {
             categoryControllers.getAllCategories(req, res).then(categs => {
-                res.render('index', {categories: categs, games})
+                res.render('index', {categories: categs, games, categName: categ[0], searchWord: false})
             })
         })
     })
@@ -102,7 +102,7 @@ app.post('/search', gameControllers.searchGame)
 app.get('/', (req, res) => {
     categoryControllers.getAllCategories(req, res).then(categs => {
         gameControllers.getAllGames(req, res).then(games => {
-            res.render('index', {categories: categs, games})
+            res.render('index', {categories: categs, games, categName: false, searchWord: false})
         })
     })
     // gameControllers.getAllGames().then(e => console.log(e))

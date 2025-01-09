@@ -29,6 +29,16 @@
                 <input type="text" placeholder="Search Games" name="searchWord" autofocus>
                 <!-- <button type="submit">Go</button> -->
             </form>
+            <% if (categName && categName.name) { %>
+                <p class="curr-categ"><%= categName.name %> Games</p>
+            <% } else { %>
+                <p class="curr-categ">All Games</p>
+            <% } %>
+                
+            <% if (searchWord){ %>
+                <p>Results for the search <span class="searchWord">'<%= searchWord %>'</span></p>
+            <% } %>
+
             <div class="games">
             <% games.map(game => { %>
                 <div class="game">

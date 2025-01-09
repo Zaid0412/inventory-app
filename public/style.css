@@ -426,6 +426,18 @@ form.edit button:hover{
     width: 100%;
 }
 
-/* .delete-categ-modal form{
+p.curr-categ{
+    font-size: 2em;
+    font-weight: 600;
+    /* text-align: center; */
+    margin-left: 20px;
+}
 
-} */
+span.searchWord{
+    color: var(--red);
+}
+
+p:has(span.searchWord){
+    padding-left: 20px;
+    font-weight: 500;
+}
