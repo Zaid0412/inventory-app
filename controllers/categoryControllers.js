@@ -16,7 +16,11 @@ async function insertCategory(req, res) {
 }
 
 async function deleteCategory(req, res) {
-    db.deleteCategory(req.body.categId)
+    db.getCategoryFromId(req.params.id).then(categ => {
+        db.deleteCategory(req.params.id)
+        console.log(req.params.id)
+    })
+    res.redirect('/')
 }
 
 async function editCategory(req, res) {

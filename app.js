@@ -45,13 +45,7 @@ app.get('/categories/edit/:id', (req, res) => {
 
 app.post('/categories/edit/:id', categoryControllers.editCategory)
 
-app.post('/categories/delete/:id', (req, res) => {
-    db.getCategoryFromId(req.params.id).then(categ => {
-        db.deleteCategory(req.params.id)
-        console.log(req.params.id)
-    })
-    res.redirect('/')
-})
+app.post('/categories/delete/:id',categoryControllers.deleteCategory)
 
 app.get(['/categories/:id'], (req, res) => {
     // const categoryId = req.params.id;
