@@ -7,7 +7,9 @@ async function getAllGames(req, res) {
 }
 
 async function insertGame(req, res) {
-    db.insertGame(req.body.name, req.body.price, req.body.desc, req.body.categoryId)
+    db.getMaxIdGame().then(id => {
+        db.insertGame(id[0].max + 1 ,req.body.name, req.body.price, req.body.desc, req.body.categoryId)
+    })
     res.redirect('/')
 }   
 

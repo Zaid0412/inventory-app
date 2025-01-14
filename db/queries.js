@@ -1,7 +1,17 @@
 const pool = require('./pool')
 
-async function insertGame(name, price, desc, categoryId) {
-    await pool.query(`INSERT INTO games (name, price, description, category_id) VALUES ($1, $2, $3, $4)`, [name, price, desc, categoryId] )
+async function getMaxIdCateg() {
+    const { rows } = await pool.query(`select MAX(id) from categories`)
+    return rows
+}
+
+async function getMaxIdGame() {
+    const { rows } = await pool.query(`select MAX(id) from games`)
+    return rows
+}
+
+async function insertGame(id, name, price, desc, categoryId) {
+    await pool.query(`INSERT INTO games (id, name, price, description, category_id) VALUES ($1, $2, $3, $4, $5)`, [id, name, price, desc, categoryId] )
 }
 
 async function deleteGame(gameId) {
@@ -36,8 +46,8 @@ async function searchGame(searchWord) {
     return rows
 }
 
-async function insertCategory(category) {
-    await pool.query(`INSERT INTO categories (name) VALUES ($1)`, [category])
+async function insertCategory(id, category) {
+    await pool.query(`INSERT INTO categories (id, name) VALUES ($1, $2)`, [id, category])
 }
 
 async function deleteCategory(categId) {
@@ -83,5 +93,7 @@ module.exports = {
     getAllCategories,
     getCategoryFromGame,
     getCategoryFromId,
-    getIdFromCategory
+    getIdFromCategory,
+    getMaxIdCateg,
+    getMaxIdGame
 }

@@ -11,7 +11,10 @@ async function getCategoryFromGame(req, res) {
 }
 
 async function insertCategory(req, res) {
-    db.insertCategory(req.body.category)
+    db.getMaxIdCateg().then(id => {
+        console.log(id[0].max + 1)
+        db.insertCategory(id[0].max + 1, req.body.category)
+    })
     res.redirect('/')
 }
 
